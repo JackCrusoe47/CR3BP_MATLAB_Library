@@ -27,6 +27,7 @@ function Kep  = SV2Kep(SV,mu)
 % -----------------------------------------------------------------------
 % 29-09-2020 : Code Vectorized
 % 30-01-2021 : Vectorized Correction on RA and NODELINE
+% 24-01-2022 : Updated condition for equitorial orbit vectorized
 % -----------------------------------------------------------------------
 
 % - Initializing for use in Simulink
@@ -88,8 +89,10 @@ idx2 = dot(NODELINE,e_vector) ~= 0;
 omega = zeros(1,length(e));
 omega(idx1) = acos( dot(i_unit(:,idx1),e_vector(:,idx1)) ./ e(idx1) );
 omega( e_vector(2,idx1) < 0 ) = 2*pi - omega( e_vector(2,idx1) < 0 );
-omega(idx2) = acos( dot(NODELINE(:,idx2),e_vector(:,idx2)) ./ (vecnorm(NODELINE(:,idx2).*e(idx2)) ));
-omega( e_vector(3,idx2) < 0 ) = 2*pi - omega( e_vector(3,idx2) < 0 );
+if any(idx2)
+    omega(idx2) = acos( dot(NODELINE(:,idx2),e_vector(:,idx2)) ./ (vecnorm(NODELINE(:,idx2).*e(idx2)) ));
+    omega( e_vector(3,idx2) < 0 ) = 2*pi - omega( e_vector(3,idx2) < 0 );
+end
 
 % -- Final Keplarian Elements
 Kep = [a;e;inc;RA;omega;theta];
