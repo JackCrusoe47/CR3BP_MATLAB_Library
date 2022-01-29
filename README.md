@@ -23,5 +23,6 @@ This is a non-exhaustive list of features in the library
 - Conversions between non-dimensional rotational to dimensional inertial frames
 - Conversions between non-dimensional rotational to Ephemeris frames
 - Other frame, vector and keplarian parameter conversions
+- **Latest Update**: example files to create major orbit familes ('examples\')
 
-**Note** I tried to specify any and all references I used in each module. But if you find any missing or if any mistakes in the implementation exists, do contact me on my e-mail: kevincharls.work@mail.com
+**Note** I tried to specify any and all references I used in each module. But if you find any missing or if any mistakes in the implementation exists, do contact me on my e-mail: kevincharls.work@gmail.com
